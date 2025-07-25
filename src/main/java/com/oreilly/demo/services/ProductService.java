@@ -42,6 +42,20 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
+    }
 
+    public void deleteProduct(Product p) {
+        productRepository.delete(p);
+    }
+
+    public void deleteAllProducts() {
+        productRepository.deleteAllInBatch();
+    }
+
+    public List<Product> findAllProductsByMinPrice(double minPrice){
+        return productRepository.findAllByPriceGreaterThanEqual(BigDecimal.valueOf(minPrice));
+    }
 
 }
